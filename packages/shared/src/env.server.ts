@@ -311,9 +311,9 @@ const options = {
         AWS_SESSION_TOKEN: z.string().optional(),
         AWS_REGION: z.string().optional(),
 
-        SOURCEBOT_CHAT_MAX_STEP_COUNT: numberSchema.default(100),
-        SOURCEBOT_CHAT_PROMPT_CACHING_ENABLED: booleanSchema.default('true'),
-        SOURCEBOT_LLM_USER_EMAIL_HEADER_ENABLED: booleanSchema.default('false'),
+        SOURCEBOT_CHAT_MAX_STEP_COUNT: numberSchema.default(10),
+        SOURCEBOT_CHAT_PROMPT_CACHING_ENABLED: booleanSchema.default('false'),
+        SOURCEBOT_LLM_USER_EMAIL_HEADER_ENABLED: booleanSchema.default('true'),
         /** TTL for the static block. The moving tail marker always uses the 5m default. */
         SOURCEBOT_CHAT_PROMPT_CACHE_STATIC_TTL: z.enum(['5m', '1h']).default('5m'),
         /**
@@ -321,7 +321,7 @@ const options = {
          * breaks (static-prefix signature changes, or zero cache reads on a
          * continuation step). Does not affect request behavior.
          */
-        SOURCEBOT_CHAT_PROMPT_CACHE_BREAK_DETECTION_ENABLED: booleanSchema.default('false'),
+        SOURCEBOT_CHAT_PROMPT_CACHE_BREAK_DETECTION_ENABLED: booleanSchema.default('true'),
         SOURCEBOT_MCP_TOOL_CALL_TIMEOUT_MS: numberSchema.int().positive().max(maxTimerDelayMs).default(60000),
 
         /**
@@ -330,7 +330,7 @@ const options = {
          * inline-text cap (which lives as a web-package constant).
          * @default 10 MiB
          */
-        SOURCEBOT_CHAT_ATTACHMENT_MAX_IMAGE_BYTES: numberSchema.int().positive().default(10 * 1024 * 1024),
+        SOURCEBOT_CHAT_ATTACHMENT_MAX_IMAGE_BYTES: numberSchema.int().positive().default(1024 * 1024),
 
         /**
          * How long (in hours) an uploaded-but-unlinked (PENDING) attachment
@@ -339,7 +339,7 @@ const options = {
          * disable the orphan sweep entirely.
          * @default 24 hours
          */
-        SOURCEBOT_CHAT_ATTACHMENT_ORPHAN_TTL_HOURS: numberSchema.int().nonnegative().default(24),
+        SOURCEBOT_CHAT_ATTACHMENT_ORPHAN_TTL_HOURS: numberSchema.int().nonnegative().default(2),
 
         DEBUG_WRITE_CHAT_MESSAGES_TO_FILE: booleanSchema.default('false'),
         DEBUG_ENABLE_REACT_SCAN: booleanSchema.default('false'),
