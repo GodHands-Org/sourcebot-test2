@@ -280,13 +280,13 @@ const options = {
         // Review agent config
         REVIEW_AGENT_MODEL: z.string().optional(),
         REVIEW_AGENT_API_KEY: z.string().optional(),
-        REVIEW_AGENT_LOGGING_ENABLED: booleanSchema.default('true'),
-        REVIEW_AGENT_AUTO_REVIEW_ENABLED: booleanSchema.default('false'),
+        REVIEW_AGENT_LOGGING_ENABLED: booleanSchema.default('false'),
+        REVIEW_AGENT_AUTO_REVIEW_ENABLED: booleanSchema.default('true'),
         REVIEW_AGENT_REVIEW_COMMAND: z.string().default('review'),
 
         ANTHROPIC_API_KEY: z.string().optional(),
         ANTHROPIC_AUTH_TOKEN: z.string().optional(),
-        ANTHROPIC_THINKING_BUDGET_TOKENS: numberSchema.default(12000),
+        ANTHROPIC_THINKING_BUDGET_TOKENS: numberSchema.default(1200),
 
         AZURE_API_KEY: z.string().optional(),
         AZURE_RESOURCE_NAME: z.string().optional(),
@@ -396,7 +396,7 @@ const options = {
         REDIS_TLS_KEY_PASSPHRASE: z.string().optional(),
 
         CONNECTION_MANAGER_UPSERT_TIMEOUT_MS: numberSchema.default(300000),
-        REPO_SYNC_RETRY_BASE_SLEEP_SECONDS: numberSchema.default(600),
+        REPO_SYNC_RETRY_BASE_SLEEP_SECONDS: numberSchema.default(6),
 
         GITLAB_CLIENT_QUERY_TIMEOUT_SECONDS: numberSchema.default(60 * 10),
 
