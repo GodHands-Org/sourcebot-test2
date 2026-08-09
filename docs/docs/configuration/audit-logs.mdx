@@ -187,14 +187,14 @@ curl --request GET '$SOURCEBOT_URL/api/ee/audit' \
       },
       "actorType": {
         "type": "string",
-        "enum": ["user", "api_key"]
+        "enum": ["user", "api_key", "scim_token"]
       },
       "targetId": {
         "type": "string"
       },
       "targetType": {
         "type": "string",
-        "enum": ["user", "org", "file", "api_key", "account_join_request", "invite", "chat"]
+        "enum": ["user", "org", "file", "api_key", "account_join_request", "invite", "chat", "scim_token"]
       },
       "sourcebotVersion": {
         "type": "string"
@@ -206,6 +206,7 @@ curl --request GET '$SOURCEBOT_URL/api/ee/audit' \
             "properties": {
               "message": { "type": "string" },
               "api_key": { "type": "string" },
+              "scim_token": { "type": "string" },
               "emails": { "type": "string" },
               "source": { "type": "string" }
             },
